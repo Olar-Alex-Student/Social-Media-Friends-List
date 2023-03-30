@@ -1,0 +1,1 @@
+export const FRIENDS_API= 'Social-Media-Friends-List\public\api\friends.json'
