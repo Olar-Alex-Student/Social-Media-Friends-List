@@ -1,13 +1,23 @@
+import { FRIENDS_API } from '../constants/friend.cont';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
-export const getFiendsList = (url) => {
-    const response = axios.get(url)
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-    const data = response.json();
-    return data;
+export const getFriendsAPI = () => {
+  const [friends, setFirends] = useState([]);
+
+  useEffect(() => {
+      async function fetchData() {
+        try {
+          const response = await axios.get(FRIENDS_API);
+          setFirends(response.data);
+          console.log(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+  
+      fetchData();
+    }, []);
+
+    return friends;
 }

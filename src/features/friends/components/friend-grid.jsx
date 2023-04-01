@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { FRIENDS_API } from "../constants/friend.cont";
+import { Container } from "@mantine/core";
+import { FriendList } from "./friend-list";
 
-export const friendGrid = () => {
-    const [friends, setFirends] = useState("");
-
-    useEffect(() => {
-
-    }, [])
+export const FriendGrid = () => {
+    return (
+        <Container>
+            <FriendList/>
+        </Container>
+    )
 }
