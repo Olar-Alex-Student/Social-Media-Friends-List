@@ -1,6 +1,6 @@
 import { Text } from "@mantine/core"
 
-export const FilterByTitle = () => {
+export const Search = () => {
     return(
         <Text></Text>
     )

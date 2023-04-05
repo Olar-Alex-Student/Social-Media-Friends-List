@@ -1,15 +1,10 @@
-import { Text } from "@mantine/core"
-import { getFriendsAPI } from "../api/friend.api"
+import { Container } from "@mantine/core"
+import { FriendThumbnail } from "./friend-thumbnail"
 
 export const FriendList = () => {
-
-    const friends = getFriendsAPI();
-
     return(
-        <Text>
-            {friends.map(friend => (
-                <Text key={friend.id}>{friend.firstName + " " + friend.lastName}</Text>
-            ))}
-        </Text>
+        <Container>
+           <FriendThumbnail/>
+        </Container>
     )
 }
