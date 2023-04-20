@@ -1,13 +1,22 @@
 import { Grid, Card, Image, Text, Badge, Button, Group } from "@mantine/core"
 import { getFriendsAPI } from "../api/friend.api"
+import { Search } from "../hooks/search";
+import { FilterByTitle } from "../hooks/filter-by-title";
 
 export const FriendThumbnail = () => {
 
     const friends = getFriendsAPI();
 
+    const title = FilterByTitle();
+
+    const name = Search();
+
     return(
         <Grid>
-            {friends.map(friend => (
+            {friends
+            // .filter(friend => friend.title === title)
+            // .filter(friend => friend.name == name)
+            .map(friend => (
                 <Grid.Col p={20} xs={6} sm={4} md={3} key={friend.id}>
                     <Card shadow="sm" padding="lg" radius="md" withBorder>
 
@@ -18,7 +27,7 @@ export const FriendThumbnail = () => {
                                     {friend.firstName + " " + friend.lastName}
                                 </Text>
                                 <Badge color="orange" variant="light">
-                                    <Text color="white">FRIEND</Text>
+                                    <Text color="white">{friend.title}</Text>
                                 </Badge>
                             </Group>
                         </Group>
