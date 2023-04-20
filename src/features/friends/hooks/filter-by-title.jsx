@@ -1,13 +1,18 @@
-import { Flex, NativeSelect } from '@mantine/core'
+import { Flex, SegmentedControl } from '@mantine/core'
 import { FriendTitle } from '../types/friend.types'
 import { useState, useEffect } from 'react'
 
 export const FilterByTitle = () => {
-    const [title,setTitle] = useState("")
+
+    const [title, setTitle] = useState("");
+
+    const handleSearch = (event) => {
+        setTitle(event.target.value);
+    };
 
     useEffect(() => {
         console.log(title);
-    }, [title]);
+    },[title]);
 
     return(
         <Flex
@@ -18,11 +23,13 @@ export const FilterByTitle = () => {
             direction="row"
             wrap="wrap"
         >
-            <NativeSelect
+            <SegmentedControl
+                fullWidth
                 data={FriendTitle}
+                color="orange"
+                size="lg"
                 radius="xl"
-                size="md"
-                onChange={(event) => setTitle(event.currentTarget.value)}
+                onClick={handleSearch}
             />
         </Flex>
     )
