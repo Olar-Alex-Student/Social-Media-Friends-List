@@ -1,10 +1,11 @@
 import { Container } from "@mantine/core"
-import { FriendThumbnail } from "./friend-thumbnail"
+import { FriendGrid } from "./friend-grid";
 
 export const FriendList = () => {
+
     return(
-        <Container>
-           <FriendThumbnail/>
+        <Container> 
+            <FriendGrid/>
         </Container>
     )
 }

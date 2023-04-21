@@ -1,47 +1,59 @@
-import { Grid, Card, Image, Text, Badge, Button, Group } from "@mantine/core"
-import { getFriendsAPI } from "../api/friend.api"
-import { Search } from "../hooks/search";
-import { FilterByTitle } from "../hooks/filter-by-title";
+import { Card, Avatar, Text, Badge, Button, Group, Grid, Flex } from '@mantine/core';
 
-export const FriendThumbnail = () => {
-
-    const friends = getFriendsAPI();
-
-    const title = FilterByTitle();
-
-    const name = Search();
-
+export const FriendThumbnail = ({friend}) => {
     return(
-        <Grid>
-            {friends
-            // .filter(friend => friend.title === title)
-            // .filter(friend => friend.name == name)
-            .map(friend => (
-                <Grid.Col p={20} xs={6} sm={4} md={3} key={friend.id}>
-                    <Card shadow="sm" padding="lg" radius="md" withBorder>
+        <Grid.Col sm={6} lg={4}>
+            <Card shadow="sm" padding="sm" radius="md" withBorder>
+                <Flex
+                    gap="xl"
+                    justify="center"
+                    align="center"
+                    direction="row"
+                    wrap="wrap"
+                >
+                    <Group>
+                        <Avatar radius="xl" size="xl" color="orange" src={friend.picture} />
+                    </Group>
+                </Flex>
 
-                        <Group mt="md" mb="xs">
-                            <Image maw={100} mx="auto" radius="md" src={friend.picture}/>
-                            <Group mt="md" mb="xs">
-                                <Text color="white">
-                                    {friend.firstName + " " + friend.lastName}
-                                </Text>
-                                <Badge color="orange" variant="light">
-                                    <Text color="white">{friend.title}</Text>
-                                </Badge>
-                            </Group>
-                        </Group>
-
-                        <Text size="sm" color="grey">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur unde.
+                <Flex
+                    mih={50}
+                    gap="xl"
+                    justify="center"
+                    align="center"
+                    direction="row"
+                    wrap="wrap"
+                >
+                    <Group>
+                        <Text>
+                            {friend.firstName} {friend.lastName}
                         </Text>
-
-                        <Button variant="light" color="orange" fullWidth mt="md" radius="md">
-                            <Text color="white">View Profile</Text>
+                        <Badge color="orange" variant="light">
+                            {friend.title}
+                        </Badge>
+                    </Group>
+                </Flex>
+                
+                <Flex
+                    mih={50}
+                    gap="xl"
+                    justify="center"
+                    align="center"
+                    direction="row"
+                    wrap="wrap"
+                >
+                    <Group>
+                        <Button
+                            variant="gradient"
+                            gradient={{ from: 'orange', to: 'red' }}
+                            size="sm"
+                            radius="xl"
+                        >
+                            View Profile
                         </Button>
-                        </Card>
-                </Grid.Col>
-            ))}
-        </Grid>
+                    </Group>
+                </Flex>
+            </Card>
+        </Grid.Col>
     )
 }

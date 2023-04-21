@@ -1,19 +1,8 @@
 import { Flex, SegmentedControl } from '@mantine/core'
 import { FriendTitle } from '../types/friend.types'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-export const FilterByTitle = () => {
-
-    const [title, setTitle] = useState("");
-
-    const handleSearch = (event) => {
-        setTitle(event.target.value);
-    };
-
-    useEffect(() => {
-        console.log(title);
-    },[title]);
-
+export const FilterByTitle = ({setTitle}) => {
     return(
         <Flex
             mih={50}
@@ -29,7 +18,7 @@ export const FilterByTitle = () => {
                 color="orange"
                 size="lg"
                 radius="xl"
-                onClick={handleSearch}
+                onClick={(event) => setTitle(event.currentTarget.value)}
             />
         </Flex>
     )

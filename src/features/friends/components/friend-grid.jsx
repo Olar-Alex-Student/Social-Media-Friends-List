@@ -1,11 +1,16 @@
-import { useState, useEffect } from "react";
-import { Container } from "@mantine/core";
-import { FriendList } from "./friend-list";
+import { getFriendsAPI } from "../api/friend.api"
+import { FriendThumbnail } from "./friend-thumbnail"
+import { Grid } from '@mantine/core';
 
 export const FriendGrid = () => {
+
+    const friends = getFriendsAPI();
+
     return (
-        <Container>
-            <FriendList/>
-        </Container>
+        <Grid grow gutter="xl">
+            {friends.map(friend => (
+                <FriendThumbnail key={friend.id} friend={friend} />
+            ))}
+        </Grid>
     )
 }
